@@ -29,9 +29,31 @@ import {
 } from "lucide-react";
 
 const AmanahLogo = ({ className = "w-10 h-9" }: { className?: string }) => (
-  <svg viewBox="0 0 100 85" className={`${className} fill-current text-[#d4af37] shrink-0`} xmlns="http://www.w3.org/2000/svg">
-    <path d="M 50 5 L 12 75 L 26 75 L 50 31 L 74 75 L 88 75 Z" />
-    <path d="M 50 42 L 35 68 L 65 68 Z" />
+  <svg viewBox="0 0 100 85" className={`${className} shrink-0`} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="brochureGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FFE58F" />
+        <stop offset="30%" stopColor="#D4AF37" />
+        <stop offset="70%" stopColor="#AA8010" />
+        <stop offset="100%" stopColor="#805B00" />
+      </linearGradient>
+      <linearGradient id="brochureGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10B981" />
+        <stop offset="40%" stopColor="#059669" />
+        <stop offset="80%" stopColor="#047857" />
+        <stop offset="100%" stopColor="#064E3B" />
+      </linearGradient>
+    </defs>
+    {/* Outer Gold Chevron */}
+    <path 
+      d="M 50 5 L 90 80 L 75 80 L 50 33 L 25 80 L 10 80 Z" 
+      fill="url(#brochureGold)"
+    />
+    {/* Inner Green Chevron */}
+    <path 
+      d="M 50 46 L 68 80 L 57 80 L 50 67 L 43 80 L 32 80 Z" 
+      fill="url(#brochureGreen)"
+    />
   </svg>
 );
 
