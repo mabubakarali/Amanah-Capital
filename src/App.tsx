@@ -39,29 +39,6 @@ const AmanahLogo = ({ className = "w-10 h-9" }: { className?: string }) => (
    PREMIUM MOTION REVEALS & WIDGET UTILITIES
 -----------------------------------------------------------------*/
 
-// WordsPullUp Component - Animates each word sliding up from an overflow hidden container
-const WordsPullUp = ({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) => {
-  return (
-    <span className={`inline-block overflow-hidden pb-1 ${className}`}>
-      {text.split(" ").map((word, i) => (
-        <motion.span
-          key={i}
-          initial={{ y: "110%", opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            delay: delay + i * 0.04,
-            duration: 0.9,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          className="inline-block mr-2"
-        >
-          {word}
-        </motion.span>
-      ))}
-    </span>
-  );
-};
-
 // WordsPullUpMultiStyle Component - Combined Normal and Italic-Serif font sections
 interface Part {
   text: string;
