@@ -204,17 +204,9 @@ const TiltCard = ({ children, className = "", onHoverStart, onHoverEnd }: { chil
   const [glowX, setGlowX] = useState(0);
   const [glowY, setGlowY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isMobile || !cardRef.current) return;
+    if (window.innerWidth < 768 || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -240,7 +232,7 @@ const TiltCard = ({ children, className = "", onHoverStart, onHoverEnd }: { chil
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => {
-        if (!isMobile) setIsHovered(true);
+        if (window.innerWidth >= 768) setIsHovered(true);
         if (onHoverStart) onHoverStart();
       }}
       onMouseLeave={() => {
@@ -1864,14 +1856,16 @@ export default function App() {
             {/* Premium WhatsApp Button */}
             <div className="pt-4">
               <a 
-                href="https://wa.me/923122120303"
+                href="https://wa.me/971501987035"
                 target="_blank"
                 rel="noopener noreferrer"
                 onMouseEnter={() => enterInteractive("WHATSAPP", "hovered")}
                 onMouseLeave={leaveInteractive}
                 className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs tracking-wider uppercase px-5 py-2.5 rounded-full shadow-lg transition-all duration-300"
               >
-                <Phone className="w-3.5 h-3.5" />
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.739-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.405 0 9.803-4.373 9.806-9.755.002-2.607-1.012-5.059-2.859-6.908C16.475 2.093 14.02 1.078 11.41 1.078 6.009 1.078 1.61 5.452 1.607 10.835c-.001 1.623.424 3.21 1.233 4.621L1.83 20.897l5.412-1.427zM17.15 15.64c-.3-.15-1.775-.875-2.05-.975-.275-.1-.475-.15-.675.15-.2.3-.775.975-.95 1.175-.175.2-.35.225-.65.075-3.04-1.524-4.885-3.75-5.59-4.965-.175-.3-.025-.462.125-.612.135-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.491-.58-.675-.589-.175-.008-.375-.01-.575-.01-.2 0-.525.075-.8 1.012-.275.938-1.05 1.013-1.05 2.463 0 1.45.95 2.85 1.075 3.025.125.175 1.866 2.85 4.52 3.999 2.652 1.15 2.652.766 3.127.725.475-.04 1.775-.725 2.025-1.388.25-.662.25-1.225.175-1.35-.075-.125-.275-.2-.575-.35z" />
+                </svg>
                 <span>WhatsApp Advisory</span>
               </a>
             </div>
