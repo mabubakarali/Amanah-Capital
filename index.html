@@ -19,32 +19,5 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <!-- Embedded SVG Turbulence Noise Filters -->
-    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
-      <defs>
-        <!-- Overlay Noise (0.65 frequency, high density for hero/video texture) -->
-        <filter id="noise-overlay-filter">
-          <feTurbulence 
-            type="fractalNoise" 
-            baseFrequency="0.65" 
-            numOctaves="3" 
-            stitchTiles="stitch" 
-            result="noise" />
-          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.7 0" />
-        </filter>
-        
-        <!-- Subtle Background Noise (0.85 frequency, low opacity/mix for cards and body) -->
-        <filter id="noise-bg-filter">
-          <feTurbulence 
-            type="fractalNoise" 
-            baseFrequency="0.85" 
-            numOctaves="4" 
-            stitchTiles="stitch" 
-            result="noise" />
-          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.15 0" />
-        </filter>
-      </defs>
-    </svg>
-
   </body>
 </html>

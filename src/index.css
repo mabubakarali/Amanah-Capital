@@ -6,66 +6,30 @@
   html, body {
     background-color: #061a10; /* Velvet Emerald Base background */
     color: #A8A695; /* Muted Sage body text */
-    font-family: 'Inter', 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-family: 'Almarai', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom Smooth Scrollbar */
+  /* Premium Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #061a10; /* Velvet Emerald */
+    background: #061a10;
   }
   ::-webkit-scrollbar-thumb {
-    background: #0b291a; /* Dark Emerald */
+    background: #0b291a;
     border-radius: 99px;
-    border: 1px solid rgba(222, 219, 200, 0.15); /* Champagne Gold border */
+    border: 2px solid #061a10;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #d4af37; /* Rich Gold hover state */
+    background: #d4af37;
   }
 }
 
-/* Custom CSS Noise Utilities using SVG feTurbulence */
-
-.noise-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  filter: url(#noise-overlay-filter);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 10;
-  opacity: 0.7;
-}
-
-.bg-noise {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  filter: url(#noise-bg-filter);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.15;
-}
-
-/* Hide default cursor globally on non-touch screens if we want to render custom cursor */
-@media (hover: hover) and (pointer: fine) {
-  .custom-cursor-enabled {
-    cursor: none;
-  }
-  .custom-cursor-enabled a,
-  .custom-cursor-enabled button,
-  .custom-cursor-enabled [role="button"],
-  .custom-cursor-enabled input,
-  .custom-cursor-enabled select,
-  .custom-cursor-enabled textarea {
-    cursor: none;
-  }
-}
 
 /* Subtle luxury card outline styling */
 .luxury-border {
@@ -77,16 +41,37 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(to bottom, rgba(222, 219, 200, 0.25), rgba(11, 41, 26, 0.4));
+  background: linear-gradient(to bottom, rgba(222, 219, 200, 0.2), rgba(11, 41, 26, 0.3));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .luxury-border:hover::before {
-  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.45), rgba(222, 219, 200, 0.1));
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.35), rgba(222, 219, 200, 0.05));
+}
+
+/* Custom Scrollbar for Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* Infinitely Scrolling Stock Ticker Marquee */
@@ -107,4 +92,32 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Ambient dynamic light sweeps */
+.ambient-glow {
+  filter: blur(120px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Magnetic Button utility */
+.btn-magnetic {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide default cursor globally on non-touch screens */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-enabled {
+    cursor: none;
+  }
+  .custom-cursor-enabled a,
+  .custom-cursor-enabled button,
+  .custom-cursor-enabled [role="button"],
+  .custom-cursor-enabled input,
+  .custom-cursor-enabled select,
+  .custom-cursor-enabled textarea {
+    cursor: none;
+  }
 }
