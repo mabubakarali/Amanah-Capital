@@ -258,7 +258,7 @@ const TiltCard = ({ children, className = "", onHoverStart, onHoverEnd }: { chil
         perspective: 1000,
       }}
       transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.5 }}
-      className={`relative rounded-3xl overflow-hidden bg-[#0b291a]/50 backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 transition-all duration-500 group shadow-2xl ${className}`}
+      className={`relative rounded-3xl overflow-hidden bg-[#0b291a]/95 md:bg-[#0b291a]/50 backdrop-blur-none md:backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 transition-all duration-500 group shadow-2xl ${className}`}
     >
       {/* Dynamic Gold Glow Spot */}
       {!isMobile && (
@@ -293,7 +293,7 @@ const RupeeDevaluationWidget = () => {
   const lossAmount = initialValue - finalValue;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0b291a]/80 backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 rounded-[2rem] shadow-3xl text-left relative z-20 overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0b291a]/95 md:bg-[#0b291a]/80 backdrop-blur-none md:backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 rounded-[2rem] shadow-3xl text-left relative z-20 overflow-hidden">
       {/* Background glow orb */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-luxury-glow blur-3xl opacity-10 pointer-events-none" />
       
@@ -460,7 +460,7 @@ const PSXCompoundingWidget = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0b291a]/80 backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 rounded-[2rem] shadow-3xl text-left relative z-20">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#0b291a]/95 md:bg-[#0b291a]/80 backdrop-blur-none md:backdrop-blur-md border border-[#0b291a]/40 p-6 sm:p-8 rounded-[2rem] shadow-3xl text-left relative z-20">
       
       <div className="lg:col-span-5 space-y-6">
         <div className="flex items-center gap-2 mb-2">
@@ -931,7 +931,7 @@ export default function App() {
         className="fixed top-0 left-0 w-full z-40 px-4 sm:px-6 flex justify-center pointer-events-none"
       >
         <nav 
-          className="bg-[#0b291a]/85 backdrop-blur-xl rounded-full border border-[#0b291a]/55 shadow-2xl px-4 py-2 flex items-center justify-between w-full max-w-4xl relative overflow-hidden pointer-events-auto"
+          className="bg-[#0b291a]/95 md:bg-[#0b291a]/85 backdrop-blur-none md:backdrop-blur-xl rounded-full border border-[#0b291a]/55 shadow-2xl px-4 py-2 flex items-center justify-between w-full max-w-4xl relative overflow-hidden pointer-events-auto"
         >
           {/* Brand Wordmark Logo */}
           <a 
@@ -1028,7 +1028,7 @@ export default function App() {
             animate={{ opacity: 1, y: "0%" }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 bg-[#061a10]/98 backdrop-blur-2xl flex flex-col justify-center items-center select-none"
+            className="fixed inset-0 z-50 bg-[#061a10]/99 flex flex-col justify-center items-center select-none"
           >
             <button
               onClick={() => {
