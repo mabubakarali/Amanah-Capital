@@ -16,7 +16,6 @@ import {
   Phone,
   MapPin,
   Mail,
-  Lock,
   Compass,
   ArrowUpRight,
   Sliders,
