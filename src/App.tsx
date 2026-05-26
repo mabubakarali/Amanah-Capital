@@ -91,30 +91,17 @@ const WordsPullUpMultiStyle = ({ parts, className = "", delay = 0 }: { parts: Pa
   );
 };
 
-// AnimatedLetter Component - Character-by-character scroll opacity text animation
 const AnimatedLetter = ({ text, className = "" }: { text: string; className?: string }) => {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 85%", "end 55%"],
-  });
-
-  const chars = text.split("");
-
   return (
-    <p ref={ref} className={`relative leading-relaxed text-[#DEDBC8] ${className}`}>
-      {chars.map((char, i) => {
-        const start = i / chars.length;
-        const end = Math.min(1, start + 0.05);
-        const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
-
-        return (
-          <motion.span key={i} style={{ opacity }} className="transition-colors duration-150">
-            {char}
-          </motion.span>
-        );
-      })}
-    </p>
+    <motion.p
+      initial={{ opacity: 0.25, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+      className={`relative leading-relaxed text-[#DEDBC8] ${className}`}
+    >
+      {text}
+    </motion.p>
   );
 };
 
