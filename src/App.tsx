@@ -151,6 +151,8 @@ const CinematicParticles = () => {
 };
 
 const StaticStructuralGrid = () => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  if (isMobile) return null;
   return (
     <div className="absolute inset-0 w-full h-full pointer-events-none z-[1] opacity-30 select-none">
       <svg className="w-full h-full text-white/5" xmlns="http://www.w3.org/2000/svg">
@@ -904,7 +906,7 @@ export default function App() {
             </div>
 
             {/* Glowing spot in preloader */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[35vh] bg-luxury-glow blur-[100px] opacity-15 pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[35vh] bg-luxury-glow blur-3xl md:blur-[100px] opacity-15 pointer-events-none" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -1075,7 +1077,7 @@ export default function App() {
         <CinematicParticles />
 
         <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/70 via-transparent to-[#061a10] z-[2] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] h-[55vh] bg-luxury-glow blur-[120px] opacity-20 rounded-full z-[2] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] h-[55vh] bg-luxury-glow blur-3xl md:blur-[120px] opacity-20 rounded-full z-[2] pointer-events-none" />
 
           {/* Floating UI HUD elements (Desktop Only) */}
           <motion.div
@@ -1255,7 +1257,7 @@ export default function App() {
         id="why-invest" 
         className="py-24 sm:py-32 px-4 sm:px-6 md:px-12 bg-[#061a10] flex justify-center items-center relative overflow-hidden z-10"
       >
-        <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-luxury-glow blur-[120px] opacity-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-luxury-glow blur-3xl md:blur-[120px] opacity-10 pointer-events-none" />
         
         <div className="max-w-5xl text-center w-full">
           
@@ -1343,7 +1345,7 @@ export default function App() {
         className="min-h-screen bg-[#061a10] relative py-24 sm:py-32 px-3 sm:px-6 md:px-12 overflow-hidden z-10"
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(212,175,55,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,175,55,0.015)_1px,transparent_1px)] bg-[size:6rem_6rem] z-[2] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-luxury-glow blur-[160px] opacity-10 z-[2]" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 rounded-full bg-luxury-glow blur-3xl md:blur-[160px] opacity-10 z-[2]" />
 
         <div className="max-w-6xl mx-auto relative z-10">
           
@@ -1849,7 +1851,7 @@ export default function App() {
         id="contact"
         className="bg-[#020a06] py-16 sm:py-24 px-4 sm:px-12 md:px-24 border-t border-[#0b291a]/40 relative overflow-hidden z-10"
       >
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-luxury-glow blur-[120px] opacity-10 pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-luxury-glow blur-3xl md:blur-[120px] opacity-10 pointer-events-none" />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10 text-left">
           
