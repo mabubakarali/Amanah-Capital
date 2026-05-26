@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    background-color: #061a10; /* Velvet Emerald Base background */
+    color: #A8A695; /* Muted Sage body text */
+    font-family: 'Inter', 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Smooth Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #061a10; /* Velvet Emerald */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0b291a; /* Dark Emerald */
+    border-radius: 99px;
+    border: 1px solid rgba(222, 219, 200, 0.15); /* Champagne Gold border */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4af37; /* Rich Gold hover state */
+  }
+}
+
+/* Custom CSS Noise Utilities using SVG feTurbulence */
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: url(#noise-overlay-filter);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.7;
+}
+
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: url(#noise-bg-filter);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+}
+
+/* Hide default cursor globally on non-touch screens if we want to render custom cursor */
+@media (hover: hover) and (pointer: fine) {
+  .custom-cursor-enabled {
+    cursor: none;
+  }
+  .custom-cursor-enabled a,
+  .custom-cursor-enabled button,
+  .custom-cursor-enabled [role="button"],
+  .custom-cursor-enabled input,
+  .custom-cursor-enabled select,
+  .custom-cursor-enabled textarea {
+    cursor: none;
+  }
+}
+
+/* Subtle luxury card outline styling */
+.luxury-border {
+  position: relative;
+}
+.luxury-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom, rgba(222, 219, 200, 0.25), rgba(11, 41, 26, 0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.luxury-border:hover::before {
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0.45), rgba(222, 219, 200, 0.1));
+}
+
+/* Infinitely Scrolling Stock Ticker Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
