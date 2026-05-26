@@ -28,6 +28,13 @@ import {
   Percent,
 } from "lucide-react";
 
+const AmanahLogo = ({ className = "w-10 h-9" }: { className?: string }) => (
+  <svg viewBox="0 0 100 85" className={`${className} fill-current text-[#d4af37] shrink-0`} xmlns="http://www.w3.org/2000/svg">
+    <path d="M 50 5 L 12 75 L 26 75 L 50 31 L 74 75 L 88 75 Z" />
+    <path d="M 50 42 L 35 68 L 65 68 Z" />
+  </svg>
+);
+
 /* ----------------------------------------------------------------
    PREMIUM MOTION REVEALS & WIDGET UTILITIES
 -----------------------------------------------------------------*/
@@ -204,6 +211,7 @@ const TiltCard = ({ children, className = "", onHoverStart, onHoverEnd }: { chil
   const [glowX, setGlowX] = useState(0);
   const [glowY, setGlowY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth < 768 || !cardRef.current) return;
@@ -873,12 +881,20 @@ export default function App() {
             
             <div className="space-y-6 text-center max-w-lg px-6">
               <motion.div
-                initial={{ letterSpacing: "0.1em", opacity: 0 }}
-                animate={{ letterSpacing: "0.3em", opacity: 1 }}
-                transition={{ duration: 1.8, ease: "easeOut" }}
-                className="text-white text-xs sm:text-sm font-light tracking-[0.25em] uppercase font-mono"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="flex flex-col items-center space-y-3"
               >
-                AMANAH CAPITAL
+                <AmanahLogo className="w-12 h-10 text-[#d4af37]" />
+                <div className="flex flex-col text-center">
+                  <span className="text-sm font-bold tracking-[0.25em] text-white font-cinzel leading-none">
+                    AMANAH
+                  </span>
+                  <span className="text-[7px] font-bold tracking-[0.3em] text-[#d4af37] uppercase leading-none mt-1.5">
+                    CAPITAL
+                  </span>
+                </div>
               </motion.div>
               
               {/* Premium Progress Bar */}
@@ -927,12 +943,17 @@ export default function App() {
             }}
             onMouseEnter={() => enterInteractive("LOGO", "hovered")}
             onMouseLeave={leaveInteractive}
-            className="flex items-center gap-1.5 pl-2 select-none"
+            className="flex items-center gap-2 pl-2 select-none"
           >
-            <span className="text-xs sm:text-sm font-semibold tracking-widest text-white uppercase font-mono">
-              AMANAH <span className="font-serif italic text-primary lowercase tracking-normal">Capital</span>
-            </span>
-            <span className="text-[#d4af37] text-xs font-bold shrink-0">*</span>
+            <AmanahLogo className="w-5 h-4.5" />
+            <div className="flex flex-col text-left">
+              <span className="text-xs font-bold tracking-wider text-white font-cinzel leading-none">
+                AMANAH
+              </span>
+              <span className="text-[6px] font-bold tracking-[0.25em] text-[#d4af37] uppercase leading-none mt-0.5">
+                CAPITAL
+              </span>
+            </div>
           </a>
 
           {/* Floating pill menu elements */}
@@ -1145,29 +1166,35 @@ export default function App() {
           >
             <div className="space-y-6 pointer-events-auto">
               
-              <motion.span
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="inline-block text-[10px] tracking-[0.25em] sm:tracking-[0.3em] text-[#d4af37] uppercase font-bold"
+              {/* Premium Golden Triangle logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex justify-center mb-2"
               >
-                Disciplined Asset Advisory
-              </motion.span>
+                <AmanahLogo className="w-20 h-16 sm:w-24 sm:h-20 text-[#d4af37]" />
+              </motion.div>
 
-              {/* Massive Editorial Header Title */}
-              <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-medium leading-[0.9] tracking-[-0.05em] text-white">
-                <WordsPullUp text="AMANAH" className="text-white" delay={0.4} />
-                <br />
-                <span className="font-serif italic text-primary">CAPITAL</span>
-                <motion.span
-                  initial={{ scale: 0, rotate: -45 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.9, type: "spring" }}
-                  className="text-primary text-[5vw] inline-block ml-1 select-none"
-                >
-                  *
-                </motion.span>
-              </h1>
+              {/* Brochure Typography Lockup */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-4"
+              >
+                <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5vw] font-bold text-[#d4af37] tracking-[0.1em] font-cinzel leading-none select-none">
+                  AMANAH
+                </h1>
+                
+                <div className="flex items-center justify-center gap-4 w-full max-w-sm sm:max-w-md mx-auto mt-2 select-none">
+                  <div className="h-[1px] bg-[#d4af37]/45 flex-grow" />
+                  <span className="text-xs sm:text-lg md:text-xl font-light tracking-[0.4em] text-[#DEDBC8] font-cinzel">
+                    CAPITAL
+                  </span>
+                  <div className="h-[1px] bg-[#d4af37]/45 flex-grow" />
+                </div>
+              </motion.div>
 
               {/* Verified Subtext description */}
               <motion.p
@@ -1842,11 +1869,16 @@ export default function App() {
           
           {/* Brand Info (Col span 4) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-medium tracking-wider text-white">
-                AMANAH <span className="font-serif italic text-primary">CAPITAL</span>
-              </span>
-              <span className="text-primary text-xs font-bold">*</span>
+            <div className="flex items-center gap-3">
+              <AmanahLogo className="w-8 h-7" />
+              <div className="flex flex-col text-left">
+                <span className="text-base font-cinzel font-bold tracking-wider text-white leading-none">
+                  AMANAH
+                </span>
+                <span className="text-[8px] font-cinzel font-bold tracking-[0.25em] text-[#d4af37] uppercase leading-none mt-0.5">
+                  CAPITAL
+                </span>
+              </div>
             </div>
             
             <p className="text-xs text-[#A8A695]/80 font-light leading-relaxed max-w-sm">
